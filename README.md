@@ -178,8 +178,7 @@ ingress-nginx-controller             LoadBalancer   172.20.212.230   a4799e308a5
 ```
 Then, create a CNAME record pointing to the NLB address at your DNS provider portal (as a exmaple I'm using Namecheap here) 
 
-[DNS CNAME](https://user-images.githubusercontent.com/52551458/115216343-c1235400-a147-11eb-94e4-b4ee64f0cc4b.png)
-
+![DNS CNAME](https://user-images.githubusercontent.com/52551458/115217444-dfd61a80-a148-11eb-8c19-7dde9fda07d0.png)
 
 
 
