@@ -7,11 +7,11 @@ This demo app includes two containerised microservices for both the [guestbook-u
 ## Prerequisites
 * Access to an AWS envrionment 
 * Access to a VMC SDDC cluster which is linked to the above AWS account
-* A VPC which has L3 reachbility (via ENI or TGW) to the SDDC and contains two public subnets
+* A VPC which has L3 reachbility (via ENI or TGW) to the SDDC and contains two public subnets (make sure to enable *auto-assign public IP* for the public subnets)
 * An EC2 Linux Bastion instance deployed in the same VPC
 * Install basic tooling on the Bastion VM
 ```
-#Install latest Eksctl
+#Install latest eksctl
 https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html
 
 #Install Kubectl (latest version 1.19)
@@ -20,8 +20,9 @@ https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
 #Enable Kubectl bash auto-completion
 echo 'source <(kubectl completion bash)' >>~/.bashrc
 ```
-
+---
 ## Step-1: Deploy an Amazon EKS managed cluster
+### Create Cluster using eksctl
 
 
 
