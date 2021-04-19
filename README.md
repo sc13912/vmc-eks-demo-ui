@@ -68,5 +68,36 @@ chmod +777 install-pgsql.sh
 
 #To install on CentOS8, follow the guide at here: https://computingforgeeks.com/how-to-install-postgresql-12-on-centos-7/ 
 ```
+### Create DB instance and table for the demo app
+```
+[root@eks-demo-db01 ~]# sudo su - postgres
+-bash-4.2$ psql -c "alter user postgres with password 'postgres'"      
+ALTER ROLE
+-bash-4.2$ exit
+logout
+[root@eks-demo-db01 ~]# 
+[root@eks-demo-db01 ~]# psql -h 192.168.100.22 -U postgres -f initDB.sql 
+Password for user postgres: 
+CREATE DATABASE
+CREATE ROLE
+GRANT
+[root@eks-demo-db01 ~]# 
+[root@eks-demo-db01 ~]# psql -h 192.168.100.22 -U vmcdba -d vmcdb -f initTable.sql
+Password for user vmcdba: 
+CREATE TABLE
+[root@eks-demo-db01 ~]# 
+[root@eks-demo-db01 ~]# psql -h 192.168.100.22 -U vmcdba -d vmcdb 
+Password for user vmcdba: 
+psql (12.6)
+Type "help" for help.
 
+vmcdb=> \dt
+        List of relations
+ Schema | Name  | Type  | Owner  
+--------+-------+-------+--------
+ public | guest | table | vmcdba
+(1 row)
+
+vmcdb=> 
+```
 
