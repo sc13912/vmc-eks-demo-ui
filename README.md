@@ -59,7 +59,7 @@ Locate the IAM role created by the eksctl and attached to the EKS managed nodes,
 ![ssm-iam](https://user-images.githubusercontent.com/52551458/115188081-bb1d7b00-a127-11eb-8ab7-266b0619ff16.png)
 
 ---
-## Step-2: Install and prepare a PostgresSQL (v12) database on a Linux VM (CentOS7/8)
+## Step-2: Install PostgresSQL (v12) database on a Linux VM (CentOS7/8) runnig on VMC
 ### Install PostgresSQL-12
 ```
 #Prepare a CentOS7 VM
@@ -69,8 +69,9 @@ chmod +777 install-pgsql.sh
 
 #To install on CentOS8, follow the guide at here: https://computingforgeeks.com/how-to-install-postgresql-12-on-centos-7/ 
 ```
-### Create DB instance and table for the demo app
-Set the Postgres default password
+---
+## Step-3: Create a DB instance and table for the demo app
+### Set the Postgres default password
 ```
 [root@eks-demo-db01 ~]# sudo su - postgres
 -bash-4.2$ psql -c "alter user postgres with password '*your-postgres-default-password*'"      
@@ -79,7 +80,7 @@ ALTER ROLE
 logout
 [root@eks-demo-db01 ~]# 
 ```
-Create a DB instance for the demo app using the supplied initDB.sql script (might need to change the db-name/username/password as per your setup)
+### Create a DB instance for the demo app using the supplied initDB.sql script (might need to change the db-name/username/password as per your setup)
 ```
 [root@eks-demo-db01 ~]# psql -h 192.168.100.22 -U postgres -f initDB.sql 
 Password for user postgres: 
@@ -88,7 +89,7 @@ CREATE ROLE
 GRANT
 [root@eks-demo-db01 ~]# 
 ```
-Create a DB table for the demo app using the supplied initTable.sql script
+### Create a DB table for the demo app using the supplied initTable.sql script
 ```
 [root@eks-demo-db01 ~]# psql -h 192.168.100.22 -U vmcdba -d vmcdb -f initTable.sql
 Password for user vmcdba: 
@@ -108,4 +109,5 @@ vmcdb=> \dt
 
 vmcdb=> 
 ```
-
+---
+## Step-4: Deploy the microservices (UI & API components) on the EKS cluster
