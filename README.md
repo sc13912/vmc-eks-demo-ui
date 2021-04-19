@@ -197,3 +197,6 @@ ingress.networking.k8s.io/guestbook-ingress created
 deployment.apps/guestbook-ui created
 service/guestbook-ui created
 ```
+Point your browser to the DNS FQDN/CNAME and you should have access to the fully functional guestbook demo app, and you should be able to see and leave guest messages.
+
+<img width="720" alt="demo-app-ingress" src="https://user-images.githubusercontent.com/52551458/115221849-71478b80-a14d-11eb-80ee-1a37e4a9fdd4.png">
