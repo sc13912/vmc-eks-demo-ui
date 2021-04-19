@@ -32,6 +32,24 @@ kubectl get nodes -o wide
 kubectl get pods --all-namespaces -o wide
 ```
 
+### Optional: Install Kubernetes Metrics Server and Ingress Controller
+```
+#Install K8s Metrics Server to get resource usage data and statistics
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+#Verify Metrics (CPU/RAM) on nodes and Pods
+kubectl top nodes
+kubectl top pods --all-namespaces
+```
+```
+#Follow the guide here to install a NGINX-based Kubernetes ingress controller: https://kubernetes.github.io/ingress-nginx/deploy/#aws
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.45.0/deploy/static/provider/aws/deploy.yaml
+
+#Verfiy the ingress controller has been deployed and linked to a Network Load Balancer 
+kubectl get pods -n ingress-nginx
+kubectl get svc -n ingress-nginx
+
+```
 ### Optional: Install SSM Agent on the EKS managed nodes
 Follow the [guide at here](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/install-ssm-agent-on-amazon-eks-worker-nodes-by-using-kubernetes-daemonset.html) 
 ```
