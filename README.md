@@ -55,7 +55,8 @@ Follow the [guide at here](https://docs.aws.amazon.com/prescriptive-guidance/lat
 ```
 kubectl apply -f ssm_daemonset.yaml && sleep 60 && kubectl delete -f ssm_daemonset.yaml
 ```
-IAM role!!!
+Locate the IAM role created by the eksctl and attached to the EKS managed nodes, and update the IAM role with the below SSM policies 
+![ssm-iam](https://user-images.githubusercontent.com/52551458/115188081-bb1d7b00-a127-11eb-8ab7-266b0619ff16.png)
 
 ---
 ## Step-2: Install and prepare a PostgresSQL (v12) database on a Linux VM (CentOS7/8)
