@@ -3,6 +3,9 @@ A hybrid guestbook demo app that is designed to showcase the VMware Cloud on AWS
 
 This demo app includes two containerised microservices for both the [guestbook-ui](https://github.com/sc13912/vmc-eks-demo-ui) and [guestbook-api](https://github.com/sc13912/vmc-eks-demo-api) components running on a Amazon EKS cluster, and a PostgresSQL VM deployed on a VMC envrionment. 
 
+<img width="1112" alt="emc-eks-demo-app" src="https://user-images.githubusercontent.com/52551458/115220495-f3cf4b80-a14b-11eb-97d1-5f85182d6233.png">
+
+
 ---
 ## Prerequisites
 * Access to an AWS envrionment 
