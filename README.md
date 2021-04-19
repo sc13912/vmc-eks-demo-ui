@@ -21,12 +21,22 @@ https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
 echo 'source <(kubectl completion bash)' >>~/.bashrc
 ```
 ---
-## Step-1: Deploy an Amazon EKS managed cluster
+## Step-1: Deploy and prepare an Amazon EKS managed cluster
 ### Create Cluster using eksctl
 ```
-eksctl create cluster --name *cluster-name* --region *your-aws-region* --nodegroup-name *node-group-name* --node-type t3.large --nodes 2 --vpc-public-subnets public-subnet-a-id,public-subnet-b-id --ssh-access --ssh-public-key *your-ssh-pub-key* --managed
+eksctl create cluster --name *cluster-name* --region *your-aws-region* --nodegroup-name *node-group-name* --node-type t3.large --nodes 2 --vpc-public-subnets *public-subnet-a-id,public-subnet-b-id* --ssh-access --ssh-public-key *your-ssh-pub-key* --managed
+
+#verify cluster has been deployed successfully
+eksctl get nodegroup --cluster eks-vmc01
+kubectl get nodes -o wide
+kubectl get pods --all-namespaces -o wide
 ```
 
+### Optional: Install SSM Agent on the EKS managed nodes
+Follow the [guide at here](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/install-ssm-agent-on-amazon-eks-worker-nodes-by-using-kubernetes-daemonset.html) 
+```
+kubectl apply -f ssm_daemonset.yaml && sleep 60 && kubectl delete -f ssm_daemonset.yaml
+```
 
 
 
