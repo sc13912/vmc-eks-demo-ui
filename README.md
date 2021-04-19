@@ -55,6 +55,16 @@ Follow the [guide at here](https://docs.aws.amazon.com/prescriptive-guidance/lat
 ```
 kubectl apply -f ssm_daemonset.yaml && sleep 60 && kubectl delete -f ssm_daemonset.yaml
 ```
+---
+## Step-2: Install and prepare a PostgresSQL (v12) database on a Linux VM (CentOS7/8)
+### Install PostgresSQL-12
+```
+#Prepare a CentOS7 VM
+#Copy and execute the supplied bash script to install PostgresSQL engine
+chmod +777 install-pgsql.sh
+./install-pgsql.sh 
 
+#To install on CentOS8, follow the guide at here: https://computingforgeeks.com/how-to-install-postgresql-12-on-centos-7/ 
+```
 
 
