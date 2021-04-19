@@ -133,7 +133,8 @@ namespace/vmc-demo created
 #Update the envrionment varalibles, based on your own Postgres DB setup, within the container spec under the guestbook-api deployment yaml file
 [ec2-user@ip-10-250-0-10 guestbook-lb]$ vim gb-api-deployment.yaml
 ```
-![api-env](https://user-images.githubusercontent.com/52551458/115193920-1a7f8900-a130-11eb-8b5d-505386b26fac.png)
+<img width="344" alt="guestbook-api-env" src="https://user-images.githubusercontent.com/52551458/115224511-46ab0200-a150-11eb-9ad5-ccc25aa4efc1.png">
+
 ```
 #Deploy the demo app, both ui and api microservices
 [ec2-user@ip-10-250-0-10 guestbook-lb]$ kubectl apply  -f .
@@ -182,11 +183,11 @@ ingress-nginx-controller             LoadBalancer   172.20.212.230   xxxxxxxx-xx
 ```
 Then, create a CNAME record pointing to the same NLB address at your DNS provider portal (as an exmaple I'm using Namecheap here) 
 
-![DNS CNAME](https://user-images.githubusercontent.com/52551458/115218019-74d91380-a149-11eb-9a1f-af3786f81867.png)
+<img width="876" alt="dns-cname" src="https://user-images.githubusercontent.com/52551458/115225581-96d69400-a151-11eb-8ac5-a9e81dd0c399.png">
 
 Locate the Ingress yaml file, and update the DNS hostname to the same CNAME record as you created previosuly. 
 
-![Ingress-host](https://user-images.githubusercontent.com/52551458/115219357-cd5ce080-a14a-11eb-82d7-51b4e1ad15dc.png)
+<img width="329" alt="guestbook-ingress" src="https://user-images.githubusercontent.com/52551458/115224739-95589c00-a150-11eb-98e2-ca7670570768.png">
 
 Finally, deploy the demo app with K8s Ingress exposing the UI layer externally via the AWS NLB
 ```
