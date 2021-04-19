@@ -159,25 +159,30 @@ Now point your browser to the ELB URL and you should have access to the fully fu
 ![demo-app-lb](https://user-images.githubusercontent.com/52551458/115195577-44d24600-a132-11eb-915e-a3ed329a125f.png)
 
 ### 4.2 ***Optional: Deploy the demo app with Kubernetes Ingress object (with integration to Amazon NLB)***
+To begin, follow the same steps as above to update namespace and envrionment varaibles of the deployment yaml files
 ```
 #First, create a k8s namespace for the demo app
-[ec2-user@ip-10-250-0-10 ~]$ kubectl create namespace vmc-demo
+[ec2-user@ip-10-11-48-16 ~]$ kubectl create namespace vmc-demo
 namespace/vmc-demo created
 
 #Optional - update the namespaces within all three (ui,api,ingress) yaml files if you use a different namespace rather than "vmc-demo"
 
 #Update the envrionment varalibles, based on your own Postgres DB setup, within the container spec under the guestbook-api deployment yaml file
-[ec2-user@ip-10-250-0-10 guestbook-ingress]$ vim gb-api-deployment.yaml
+[ec2-user@ip-10-11-48-16 guestbook-ingress]$ vim gb-api-deployment.yaml
 ```
 Now, if you have a valid public domain then you can set up host-based routing via Kubernetes ingress, which provides intelligent layer 7 routing and reduces the consumption of additional NLBs.
 
-First, obtain the NLB URL which is provisioned for the NGINX ingress controller:
+Next, obtain the NLB URL which is provisioned for the NGINX ingress controller:
 ```
 [ec2-user@ip-10-11-48-16 ~]$ kubectl get svc -n ingress-nginx | grep LoadBalancer
 ingress-nginx-controller             LoadBalancer   172.20.212.230   xxxxxxxx-xxxxxxxx.elb.us-east-1.amazonaws.com   80:31786/TCP,443:32251/TCP   75d
 ```
-Then, create a CNAME record pointing to the NLB address at your DNS provider portal (as a exmaple I'm using Namecheap here) 
+Then, create a CNAME record pointing to the same NLB address at your DNS provider portal (as an exmaple I'm using Namecheap here) 
 
 ![DNS CNAME](https://user-images.githubusercontent.com/52551458/115218019-74d91380-a149-11eb-9a1f-af3786f81867.png)
+
+Update the Ingress yaml file with the DNS hostname to the same CNAME record as you created previosuly. 
+
+![Ingress-host](https://user-images.githubusercontent.com/52551458/115219357-cd5ce080-a14a-11eb-82d7-51b4e1ad15dc.png)
 
 
