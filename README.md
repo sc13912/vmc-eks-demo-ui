@@ -110,4 +110,8 @@ vmcdb=> \dt
 vmcdb=> 
 ```
 ---
-## Step-4: Deploy the microservices (UI & API components) on the EKS cluster
+## Step-4: Deploy the microservices (UI & API components) onto the EKS cluster
+### Deploy the demo app with Kubernetes LoadBalancer object (via Amazon ELB classic load balancer)
+
+
+### Optional: Deploy the demo app with Kubernetes Ingress object (with integration to Amazon NLB)
