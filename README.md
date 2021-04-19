@@ -183,7 +183,7 @@ ingress-nginx-controller             LoadBalancer   172.20.212.230   xxxxxxxx-xx
 ```
 Then, create a CNAME record pointing to the same NLB address at your DNS provider portal (as an exmaple I'm using Namecheap here) 
 
-<img width="876" alt="dns-cname" src="https://user-images.githubusercontent.com/52551458/115225581-96d69400-a151-11eb-8ac5-a9e81dd0c399.png">
+<img width="613" alt="dns-cname" src="https://user-images.githubusercontent.com/52551458/115226406-8c68ca00-a152-11eb-95d5-5af5f5be1d91.png">
 
 Locate the Ingress yaml file, and update the DNS hostname to the same CNAME record as you created previosuly. 
 
