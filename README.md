@@ -22,7 +22,6 @@ echo 'source <(kubectl completion bash)' >>~/.bashrc
 ```
 ---
 <br />
-<br />
 
 ## Step-1: Deploy and prepare an Amazon EKS managed cluster
 ### 1.1 Create an EKS cluster using eksctl
@@ -63,7 +62,6 @@ Locate the IAM role created by the eksctl and attached to the EKS managed nodes,
 
 ---
 <br />
-<br />
 
 ## Step-2: Install PostgresSQL (v12) database on a Linux VM (CentOS7/8) runnig on VMC
 ### 2.1 Install PostgresSQL-12
@@ -76,7 +74,6 @@ chmod +777 install-pgsql.sh
 #To install on CentOS8, follow the guide at here: https://computingforgeeks.com/how-to-install-postgresql-12-on-centos-7/ 
 ```
 ---
-<br />
 <br />
 
 ## Step-3: Create a DB instance and table for the demo app
@@ -119,7 +116,6 @@ vmcdb=> \dt
 vmcdb=> 
 ```
 ---
-<br />
 <br />
 
 ## Step-4: Deploy the microservices (UI & API components) onto the EKS cluster
