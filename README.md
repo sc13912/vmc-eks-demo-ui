@@ -119,9 +119,34 @@ namespace/vmc-demo created
 
 #Optional - update the namespaces within both (ui & api) deployment yaml files if you use a different namespace rather than "vmc-demo"
 
-#Update the envrionment varalible within the container spec under the guestbook-api deployment yaml file
+#Update the envrionment varalibles, based on your own Postgres DB setup, within the container spec under the guestbook-api deployment yaml file
 [ec2-user@ip-10-250-0-10 k8s-demo]$ vim gb-api-deployment.yaml
 ```
 ![api-env](https://user-images.githubusercontent.com/52551458/115193920-1a7f8900-a130-11eb-8b5d-505386b26fac.png)
+```
+#Deploy the demo app, both ui and api microservices
+[ec2-user@ip-10-250-0-10 guestbook-lb]$ kubectl apply  -f .
+deployment.apps/guestbook-api created
+service/guestbook-api created
+deployment.apps/guestbook-ui created
+service/guestbook-ui created
+
+#Verify all 4x pods are up and running
+[ec2-user@ip-10-250-0-10 guestbook-lb]$ kubectl get pods -n vmc-demo
+NAME                             READY   STATUS    RESTARTS   AGE
+guestbook-api-64c489667c-4kdjs   1/1     Running   0          2m20s
+guestbook-api-64c489667c-qpbs4   1/1     Running   0          2m20s
+guestbook-ui-7447f976d4-5cbck    1/1     Running   0          2m20s
+guestbook-ui-7447f976d4-hwtkm    1/1     Running   0          2m20s
+
+#Verify both k8s microservices status and obtain the ELB URL 
+[ec2-user@ip-10-250-0-10 guestbook-lb]$ kubectl  get svc -n vmc-demo
+NAME            TYPE           CLUSTER-IP       EXTERNAL-IP                                                                   PORT(S)        AGE
+guestbook-api   ClusterIP      172.20.176.203   <none>                                                                        3000/TCP       2m57s
+guestbook-ui    LoadBalancer   172.20.138.240   acf26220299fb4e02a5825f619672fb5-383158863.ap-southeast-2.elb.amazonaws.com   80:32210/TCP   2m57s
+```
+Now point your browser to the ELB URL and you should have access to the fully functional demo app, and you should be able to see and leave guest messages.
+![demo-app-gui](https://user-images.githubusercontent.com/52551458/115195173-c675a400-a131-11eb-9463-b10dcf0b674e.png)
+
 
 ### 4.2 ***Optional: Deploy the demo app with Kubernetes Ingress object (with integration to Amazon NLB)***
