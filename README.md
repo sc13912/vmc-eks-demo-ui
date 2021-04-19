@@ -155,6 +155,7 @@ guestbook-ui    LoadBalancer   172.20.138.240   acf26220299fb4e02a5825f619672fb5
 ```
 
 Now point your browser to the ELB URL and you should have access to the fully functional guestbook demo app, and you should be able to see and leave guest messages.
+
 ![demo-app-lb](https://user-images.githubusercontent.com/52551458/115195577-44d24600-a132-11eb-915e-a3ed329a125f.png)
 
 ### 4.2 ***Optional: Deploy the demo app with Kubernetes Ingress object (with integration to Amazon NLB)***
