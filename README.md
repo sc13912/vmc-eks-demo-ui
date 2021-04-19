@@ -61,6 +61,7 @@ Follow the [guide at here](https://docs.aws.amazon.com/prescriptive-guidance/lat
 kubectl apply -f ssm_daemonset.yaml && sleep 60 && kubectl delete -f ssm_daemonset.yaml
 ```
 Locate the IAM role created by the eksctl and attached to the EKS managed nodes, and update the IAM role with the below SSM policies 
+
 <img width="411" alt="ssm-iam" src="https://user-images.githubusercontent.com/52551458/115226697-e5386280-a152-11eb-97d4-ab82cf52cd56.png">
 
 ---
@@ -69,12 +70,15 @@ Locate the IAM role created by the eksctl and attached to the EKS managed nodes,
 ## Step-2: Install PostgresSQL (v12) database on a Linux VM (CentOS7/8) runnig on VMC
 ### 2.1 Install PostgresSQL-12
 ```
-#Prepare a clean installed CentOS7 VM (min 2vCPU, 4GB RAM)
+#Prepare a clean installed CentOS7/8 VM (min 2x vCPU, 4GB RAM, 20GB vDisk)
+
 #Copy and execute the supplied bash script to install PostgresSQL-12 on CentOS7
 chmod +777 install-pgsql-centos7.sh
 ./install-pgsql-centos7.sh
 
-#To install on CentOS8, follow the guide at here: https://computingforgeeks.com/how-to-install-postgresql-12-on-centos-7/ 
+#Alternatively, to install PostgresSQL-12 on CentOS8:
+chmod +777 install-pgsql-centos8.sh
+./install-pgsql-centos8.sh
 ```
 ---
 <br />
@@ -104,6 +108,8 @@ GRANT
 Password for user vmcdba: 
 CREATE TABLE
 [root@eks-demo-db01 ~]# 
+
+#Verify that the DB table has been created correctly
 [root@eks-demo-db01 ~]# psql -h 192.168.100.22 -U vmcdba -d vmcdb 
 Password for user vmcdba: 
 psql (12.6)
@@ -116,7 +122,7 @@ vmcdb=> \dt
  public | guest | table | vmcdba
 (1 row)
 
-vmcdb=> 
+vmcdb=> exit
 ```
 ---
 <br />
