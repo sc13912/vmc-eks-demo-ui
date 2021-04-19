@@ -133,7 +133,8 @@ namespace/vmc-demo created
 #Update the envrionment varalibles, based on your own Postgres DB setup, within the container spec under the guestbook-api deployment yaml file
 [ec2-user@ip-10-250-0-10 guestbook-lb]$ vim gb-api-deployment.yaml
 ```
-![api-env](https://user-images.githubusercontent.com/52551458/115193920-1a7f8900-a130-11eb-8b5d-505386b26fac.png)
+<img width="344" alt="guestbook-api-env" src="https://user-images.githubusercontent.com/52551458/115224511-46ab0200-a150-11eb-9ad5-ccc25aa4efc1.png">
+
 ```
 #Deploy the demo app, both ui and api microservices
 [ec2-user@ip-10-250-0-10 guestbook-lb]$ kubectl apply  -f .
