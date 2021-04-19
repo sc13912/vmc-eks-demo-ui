@@ -69,10 +69,10 @@ Locate the IAM role created by the eksctl and attached to the EKS managed nodes,
 ## Step-2: Install PostgresSQL (v12) database on a Linux VM (CentOS7/8) runnig on VMC
 ### 2.1 Install PostgresSQL-12
 ```
-#Prepare a CentOS7 VM
+#Prepare a clean installed CentOS7 VM (min 2vCPU, 4GB RAM)
 #Copy and execute the supplied bash script to install PostgresSQL-12 on CentOS7
-chmod +777 install-pgsql.sh
-./install-pgsql.sh 
+chmod +777 install-pgsql-centos7.sh
+./install-pgsql-centos7.sh
 
 #To install on CentOS8, follow the guide at here: https://computingforgeeks.com/how-to-install-postgresql-12-on-centos-7/ 
 ```
@@ -160,7 +160,8 @@ guestbook-ui    LoadBalancer   172.20.138.240   acf26220299fb4e02a5825f619672fb5
 
 Now point your browser to the ELB URL and you should have access to the fully functional guestbook demo app, and you should be able to see and leave guest messages.
 
-![demo-app-lb](https://user-images.githubusercontent.com/52551458/115195577-44d24600-a132-11eb-915e-a3ed329a125f.png)
+<img width="858" alt="demo-app-lb" src="https://user-images.githubusercontent.com/52551458/115232005-97732880-a159-11eb-8b40-6809165715d3.png">
+
 
 ### 4.2 ***Optional: Deploy the demo app with Kubernetes Ingress object (with integration to Amazon NLB)***
 To begin, follow the same steps as above to update namespace and envrionment varaibles of the deployment yaml files
