@@ -21,6 +21,8 @@ https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
 echo 'source <(kubectl completion bash)' >>~/.bashrc
 ```
 ---
+
+
 ## Step-1: Deploy and prepare an Amazon EKS managed cluster
 ### 1.1 Create an EKS cluster using eksctl
 ```
@@ -59,6 +61,8 @@ Locate the IAM role created by the eksctl and attached to the EKS managed nodes,
 ![ssm-iam](https://user-images.githubusercontent.com/52551458/115188081-bb1d7b00-a127-11eb-8ab7-266b0619ff16.png)
 
 ---
+
+
 ## Step-2: Install PostgresSQL (v12) database on a Linux VM (CentOS7/8) runnig on VMC
 ### 2.1 Install PostgresSQL-12
 ```
@@ -70,6 +74,8 @@ chmod +777 install-pgsql.sh
 #To install on CentOS8, follow the guide at here: https://computingforgeeks.com/how-to-install-postgresql-12-on-centos-7/ 
 ```
 ---
+
+
 ## Step-3: Create a DB instance and table for the demo app
 ### 3.1 Set the Postgres default password
 ```
@@ -110,6 +116,8 @@ vmcdb=> \dt
 vmcdb=> 
 ```
 ---
+
+
 ## Step-4: Deploy the microservices (UI & API components) onto the EKS cluster
 ### 4.1 Deploy the demo app with Kubernetes LoadBalancer object (via Amazon ELB classic load balancer)
 ```
@@ -145,8 +153,8 @@ NAME            TYPE           CLUSTER-IP       EXTERNAL-IP                     
 guestbook-api   ClusterIP      172.20.176.203   <none>                                                                        3000/TCP       2m57s
 guestbook-ui    LoadBalancer   172.20.138.240   acf26220299fb4e02a5825f619672fb5-383158863.ap-southeast-2.elb.amazonaws.com   80:32210/TCP   2m57s
 ```
-Now point your browser to the ELB URL and you should have access to the fully functional guestbook demo app, and you should be able to see and leave guest messages.
-![demo-app-gui](https://user-images.githubusercontent.com/52551458/115195173-c675a400-a131-11eb-9463-b10dcf0b674e.png)
 
+Now point your browser to the ELB URL and you should have access to the fully functional guestbook demo app, and you should be able to see and leave guest messages.
+![demo-app-lb](https://user-images.githubusercontent.com/52551458/115195577-44d24600-a132-11eb-915e-a3ed329a125f.png)
 
 ### 4.2 ***Optional: Deploy the demo app with Kubernetes Ingress object (with integration to Amazon NLB)***
