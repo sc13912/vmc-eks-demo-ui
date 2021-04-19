@@ -11,16 +11,17 @@ This demo app includes two containerised microservices for both the [guestbook-u
 * An EC2 Linux Bastion instance deployed in the same VPC
 * Install basic tooling on the Bastion VM
 ```
-#Install latest eksctl
+#Install latest Eksctl
 https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html
 
 #Install Kubectl (latest version 1.19)
 https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html 
+
+#Enable Kubectl bash auto-completion
+echo 'source <(kubectl completion bash)' >>~/.bashrc
 ```
 
-
-
-## Step-1: De
+## Step-1: Deploy an Amazon EKS managed cluster
 
 
 
