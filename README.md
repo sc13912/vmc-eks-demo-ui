@@ -174,11 +174,10 @@ Now, if you have a valid public domain then you can set up host-based routing vi
 First, obtain the NLB URL which is provisioned for the NGINX ingress controller:
 ```
 [ec2-user@ip-10-11-48-16 ~]$ kubectl get svc -n ingress-nginx | grep LoadBalancer
-ingress-nginx-controller             LoadBalancer   172.20.212.230   a4799e308a5be4d6ab8e484b9d961cc8-317762b3b0aa7c29.elb.us-east-1.amazonaws.com   80:31786/TCP,443:32251/TCP   75d
+ingress-nginx-controller             LoadBalancer   172.20.212.230   xxxxxxxx-xxxxxxxx.elb.us-east-1.amazonaws.com   80:31786/TCP,443:32251/TCP   75d
 ```
 Then, create a CNAME record pointing to the NLB address at your DNS provider portal (as a exmaple I'm using Namecheap here) 
 
-![DNS CNAME](https://user-images.githubusercontent.com/52551458/115217444-dfd61a80-a148-11eb-8c19-7dde9fda07d0.png)
-
+![DNS CNAME](https://user-images.githubusercontent.com/52551458/115218019-74d91380-a149-11eb-9a1f-af3786f81867.png)
 
 
