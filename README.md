@@ -112,6 +112,15 @@ vmcdb=>
 ---
 ## Step-4: Deploy the microservices (UI & API components) onto the EKS cluster
 ### 4.1 Deploy the demo app with Kubernetes LoadBalancer object (via Amazon ELB classic load balancer)
+```
+#First, create a k8s namespace for the demo app
+[ec2-user@ip-10-250-0-10 ~]$ kubectl create namespace vmc-demo
+namespace/vmc-demo created
 
+#Optional - update the namespaces within both (ui & api) deployment yaml files if you use a different namespace rather than "vmc-demo"
 
+#Update the envrionment varalible within the container spec under the guestbook-api deployment yaml file
+[ec2-user@ip-10-250-0-10 k8s-demo]$ vim gb-api-deployment.yaml
+![Screen Shot 2021-04-19 at 4 54 13 pm](https://user-images.githubusercontent.com/52551458/115193786-f2902580-a12f-11eb-8680-9c8d9e2fb09e.png)
+```
 ### 4.2 ***Optional: Deploy the demo app with Kubernetes Ingress object (with integration to Amazon NLB)***
