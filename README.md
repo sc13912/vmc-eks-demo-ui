@@ -121,6 +121,7 @@ namespace/vmc-demo created
 
 #Update the envrionment varalible within the container spec under the guestbook-api deployment yaml file
 [ec2-user@ip-10-250-0-10 k8s-demo]$ vim gb-api-deployment.yaml
-![Screen Shot 2021-04-19 at 4 54 13 pm](https://user-images.githubusercontent.com/52551458/115193786-f2902580-a12f-11eb-8680-9c8d9e2fb09e.png)
 ```
+![api-env](https://user-images.githubusercontent.com/52551458/115193920-1a7f8900-a130-11eb-8b5d-505386b26fac.png)
+
 ### 4.2 ***Optional: Deploy the demo app with Kubernetes Ingress object (with integration to Amazon NLB)***
