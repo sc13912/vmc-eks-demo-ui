@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: vmc-demo
+  name: guestbook-api
+  labels:
+    app: vmc-demo
+    tier: guestbook-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: vmc-demo
+      tier: guestbook-api
+  template:
+    metadata:
+      labels:
+        app: vmc-demo
+        tier: guestbook-api
+    spec:
+      containers:
+      - name: guestbook-api
+        image: schen13912/guestbook-api:latest
+        env:
+        - name: DB_HOST
+          value: "x.x.x.x"
+        - name: DB_NAME
+          value: "vmcdb"
+        - name: DB_USERNAME
+          value: "vmcdba"
+        - name: DB_PASSWORD
+          value: "vmc123"
+        resources:
+          requests:
+            cpu: 200m
+            memory: 200Mi
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: vmc-demo
+  name: guestbook-api
+  labels:
+    app: vmc-demo
+    tier: guestbook-api
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3000
+    targetPort: 3000
+  selector:
+    app: vmc-demo
+    tier: guestbook-api

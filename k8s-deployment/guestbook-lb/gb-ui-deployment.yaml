@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: vmc-demo
+  name: guestbook-ui
+  labels:
+    app: vmc-demo
+    tier: guestbook-ui
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 2
+  selector:
+    matchLabels:
+      app: vmc-demo
+      tier: guestbook-ui
+  template:
+    metadata:
+      labels:
+        app: vmc-demo
+        tier: guestbook-ui
+    spec:
+      containers:
+      - name: guestbook-ui
+        image: schen13912/guestbook-ui:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: vmc-demo
+  name: guestbook-ui
+  labels:
+    app: vmc-demo
+    tier: guestbook-ui
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: vmc-demo
+    tier: guestbook-ui

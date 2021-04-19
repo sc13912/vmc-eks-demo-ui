@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: guestbook-ingress
+  namespace: vmc-demo
+spec:
+  rules:
+  - host: hostname.your.domain
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: guestbook-ui
+          servicePort: 80
