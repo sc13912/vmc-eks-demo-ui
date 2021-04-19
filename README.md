@@ -32,7 +32,7 @@ kubectl get nodes -o wide
 kubectl get pods --all-namespaces -o wide
 ```
 
-### Optional: Install Kubernetes Metrics Server and Ingress Controller
+### ***Optional: Install Kubernetes Metrics Server and Ingress Controller***
 ```
 #Install K8s Metrics Server to get resource usage data and statistics
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
@@ -50,7 +50,7 @@ kubectl get pods -n ingress-nginx
 kubectl get svc -n ingress-nginx
 
 ```
-### Optional: Install SSM Agent on the EKS managed nodes
+### ***Optional: Install SSM Agent on the EKS managed nodes***
 Follow the [guide at here](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/install-ssm-agent-on-amazon-eks-worker-nodes-by-using-kubernetes-daemonset.html) 
 ```
 kubectl apply -f ssm_daemonset.yaml && sleep 60 && kubectl delete -f ssm_daemonset.yaml
@@ -114,4 +114,4 @@ vmcdb=>
 ### Deploy the demo app with Kubernetes LoadBalancer object (via Amazon ELB classic load balancer)
 
 
-### Optional: Deploy the demo app with Kubernetes Ingress object (with integration to Amazon NLB)
+### ***Optional: Deploy the demo app with Kubernetes Ingress object (with integration to Amazon NLB)***
