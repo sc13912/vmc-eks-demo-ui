@@ -22,7 +22,7 @@ echo 'source <(kubectl completion bash)' >>~/.bashrc
 ```
 ---
 ## Step-1: Deploy and prepare an Amazon EKS managed cluster
-### Create an EKS cluster using eksctl
+### 1.1 Create an EKS cluster using eksctl
 ```
 eksctl create cluster --name *cluster-name* --region *your-aws-region* --nodegroup-name *node-group-name* --node-type t3.large --nodes 2 --vpc-public-subnets *public-subnet-a-id,public-subnet-b-id* --ssh-access --ssh-public-key *your-ssh-pub-key* --managed
 
@@ -32,7 +32,7 @@ kubectl get nodes -o wide
 kubectl get pods --all-namespaces -o wide
 ```
 
-### ***Optional: Install Kubernetes Metrics Server and Ingress Controller***
+### 1.2 ***Optional: Install Kubernetes Metrics Server and Ingress Controller***
 ```
 #Install K8s Metrics Server to get resource usage data and statistics
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
@@ -50,7 +50,7 @@ kubectl get pods -n ingress-nginx
 kubectl get svc -n ingress-nginx
 
 ```
-### ***Optional: Install SSM Agent on the EKS managed nodes***
+### 1.3 ***Optional: Install SSM Agent on the EKS managed nodes***
 Follow the [guide at here](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/install-ssm-agent-on-amazon-eks-worker-nodes-by-using-kubernetes-daemonset.html) 
 ```
 kubectl apply -f ssm_daemonset.yaml && sleep 60 && kubectl delete -f ssm_daemonset.yaml
@@ -60,7 +60,7 @@ Locate the IAM role created by the eksctl and attached to the EKS managed nodes,
 
 ---
 ## Step-2: Install PostgresSQL (v12) database on a Linux VM (CentOS7/8) runnig on VMC
-### Install PostgresSQL-12
+### 2.1 Install PostgresSQL-12
 ```
 #Prepare a CentOS7 VM
 #Copy and execute the supplied bash script to install PostgresSQL engine
@@ -71,7 +71,7 @@ chmod +777 install-pgsql.sh
 ```
 ---
 ## Step-3: Create a DB instance and table for the demo app
-### Set the Postgres default password
+### 3.1 Set the Postgres default password
 ```
 [root@eks-demo-db01 ~]# sudo su - postgres
 -bash-4.2$ psql -c "alter user postgres with password '*your-postgres-default-password*'"      
@@ -80,7 +80,7 @@ ALTER ROLE
 logout
 [root@eks-demo-db01 ~]# 
 ```
-### Create a DB instance for the demo app using the supplied initDB.sql script (might need to change the db-name/username/password as per your setup)
+### 3.2 Create a DB instance for the demo app using the supplied initDB.sql script (might need to change the db-name/username/password as per your setup)
 ```
 [root@eks-demo-db01 ~]# psql -h 192.168.100.22 -U postgres -f initDB.sql 
 Password for user postgres: 
@@ -89,7 +89,7 @@ CREATE ROLE
 GRANT
 [root@eks-demo-db01 ~]# 
 ```
-### Create a DB table for the demo app using the supplied initTable.sql script
+### 3.3 Create a DB table for the demo app using the supplied initTable.sql script
 ```
 [root@eks-demo-db01 ~]# psql -h 192.168.100.22 -U vmcdba -d vmcdb -f initTable.sql
 Password for user vmcdba: 
@@ -111,7 +111,7 @@ vmcdb=>
 ```
 ---
 ## Step-4: Deploy the microservices (UI & API components) onto the EKS cluster
-### Deploy the demo app with Kubernetes LoadBalancer object (via Amazon ELB classic load balancer)
+### 4.1 Deploy the demo app with Kubernetes LoadBalancer object (via Amazon ELB classic load balancer)
 
 
-### ***Optional: Deploy the demo app with Kubernetes Ingress object (with integration to Amazon NLB)***
+### 4.2 ***Optional: Deploy the demo app with Kubernetes Ingress object (with integration to Amazon NLB)***
