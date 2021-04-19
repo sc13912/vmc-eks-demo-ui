@@ -139,7 +139,8 @@ namespace/vmc-demo created
 #Update the environment variables, based on your own Postgres DB setup, within the container spec under the guestbook-api deployment yaml file
 [ec2-user@ip-10-250-0-10 guestbook-lb]$ vim gb-api-deployment.yaml
 ```
-<img width="344" alt="guestbook-api-env" src="https://user-images.githubusercontent.com/52551458/115224511-46ab0200-a150-11eb-9ad5-ccc25aa4efc1.png">
+<img width="369" alt="guestbook-api-env" src="https://user-images.githubusercontent.com/52551458/115255190-5d158580-a171-11eb-8d33-3b04597b0df1.png">
+
 
 ```
 #Deploy the demo app, both ui and api microservices
