@@ -22,7 +22,7 @@ echo 'source <(kubectl completion bash)' >>~/.bashrc
 ```
 ---
 ## Step-1: Deploy and prepare an Amazon EKS managed cluster
-### Create Cluster using eksctl
+### Create an EKS cluster using eksctl
 ```
 eksctl create cluster --name *cluster-name* --region *your-aws-region* --nodegroup-name *node-group-name* --node-type t3.large --nodes 2 --vpc-public-subnets *public-subnet-a-id,public-subnet-b-id* --ssh-access --ssh-public-key *your-ssh-pub-key* --managed
 
