@@ -7,7 +7,7 @@ This demo app includes two containerised microservices for both the [guestbook-u
 ## Prerequisites
 * Access to an AWS envrionment 
 * Access to a VMC SDDC cluster which is linked to the above AWS account
-* A VPC which has L3 reachbility (via ENI or TGW) to the SDDC and contains two public subnets (make sure to enable *auto-assign public IP* for the public subnets)
+* A VPC which has L3 reachbility (via ENI or TGW) to the SDDC and contains two public subnets (make sure to enable ***Auto-assign public IPv4 address*** for the public subnets)
 * An EC2 Linux Bastion instance deployed in the same VPC
 * Install basic tooling on the Bastion VM
 ```
@@ -42,7 +42,7 @@ kubectl top nodes
 kubectl top pods --all-namespaces
 ```
 ```
-#Follow the guide here to install a NGINX-based Kubernetes ingress controller: https://kubernetes.github.io/ingress-nginx/deploy/#aws
+#Follow the guide to install a NGINX-based Kubernetes ingress controller: https://kubernetes.github.io/ingress-nginx/deploy/#aws
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.45.0/deploy/static/provider/aws/deploy.yaml
 
 #Verfiy the ingress controller has been deployed and linked to a Network Load Balancer 
