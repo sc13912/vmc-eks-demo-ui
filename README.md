@@ -128,7 +128,7 @@ namespace/vmc-demo created
 #Optional - update the namespaces within both (ui & api) deployment yaml files if you use a different namespace rather than "vmc-demo"
 
 #Update the envrionment varalibles, based on your own Postgres DB setup, within the container spec under the guestbook-api deployment yaml file
-[ec2-user@ip-10-250-0-10 k8s-demo]$ vim gb-api-deployment.yaml
+[ec2-user@ip-10-250-0-10 guestbook-lb]$ vim gb-api-deployment.yaml
 ```
 ![api-env](https://user-images.githubusercontent.com/52551458/115193920-1a7f8900-a130-11eb-8b5d-505386b26fac.png)
 ```
@@ -159,3 +159,27 @@ Now point your browser to the ELB URL and you should have access to the fully fu
 ![demo-app-lb](https://user-images.githubusercontent.com/52551458/115195577-44d24600-a132-11eb-915e-a3ed329a125f.png)
 
 ### 4.2 ***Optional: Deploy the demo app with Kubernetes Ingress object (with integration to Amazon NLB)***
+```
+#First, create a k8s namespace for the demo app
+[ec2-user@ip-10-250-0-10 ~]$ kubectl create namespace vmc-demo
+namespace/vmc-demo created
+
+#Optional - update the namespaces within all three (ui,api,ingress) yaml files if you use a different namespace rather than "vmc-demo"
+
+#Update the envrionment varalibles, based on your own Postgres DB setup, within the container spec under the guestbook-api deployment yaml file
+[ec2-user@ip-10-250-0-10 guestbook-ingress]$ vim gb-api-deployment.yaml
+```
+Now, if you have a valid public domain then you can set up host-based routing via Kubernetes ingress, which provides intelligent layer 7 routing and reduces the consumption of additional NLBs.
+
+First, obtain the NLB URL which is provisioned for the NGINX ingress controller:
+```
+[ec2-user@ip-10-11-48-16 ~]$ kubectl get svc -n ingress-nginx | grep LoadBalancer
+ingress-nginx-controller             LoadBalancer   172.20.212.230   a4799e308a5be4d6ab8e484b9d961cc8-317762b3b0aa7c29.elb.us-east-1.amazonaws.com   80:31786/TCP,443:32251/TCP   75d
+```
+Then, create a CNAME record pointing to the NLB address at your DNS provider portal (as a exmaple I'm using Namecheap here) 
+
+[DNS CNAME](https://user-images.githubusercontent.com/52551458/115216343-c1235400-a147-11eb-94e4-b4ee64f0cc4b.png)
+
+
+
+
