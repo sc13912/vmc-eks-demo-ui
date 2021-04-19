@@ -69,7 +69,7 @@ Locate the IAM role created by the eksctl and attached to the EKS managed nodes,
 ### 2.1 Install PostgresSQL-12
 ```
 #Prepare a CentOS7 VM
-#Copy and execute the supplied bash script to install PostgresSQL engine
+#Copy and execute the supplied bash script to install PostgresSQL engine on CentOS7
 chmod +777 install-pgsql.sh
 ./install-pgsql.sh 
 
