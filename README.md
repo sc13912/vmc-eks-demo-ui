@@ -21,7 +21,8 @@ https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
 echo 'source <(kubectl completion bash)' >>~/.bashrc
 ```
 ---
-
+<br />
+<br />
 
 ## Step-1: Deploy and prepare an Amazon EKS managed cluster
 ### 1.1 Create an EKS cluster using eksctl
@@ -61,8 +62,8 @@ Locate the IAM role created by the eksctl and attached to the EKS managed nodes,
 ![ssm-iam](https://user-images.githubusercontent.com/52551458/115188081-bb1d7b00-a127-11eb-8ab7-266b0619ff16.png)
 
 ---
-
-
+<br />
+<br />
 ## Step-2: Install PostgresSQL (v12) database on a Linux VM (CentOS7/8) runnig on VMC
 ### 2.1 Install PostgresSQL-12
 ```
