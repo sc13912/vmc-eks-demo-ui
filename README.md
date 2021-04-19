@@ -184,8 +184,16 @@ Then, create a CNAME record pointing to the same NLB address at your DNS provide
 
 ![DNS CNAME](https://user-images.githubusercontent.com/52551458/115218019-74d91380-a149-11eb-9a1f-af3786f81867.png)
 
-Update the Ingress yaml file with the DNS hostname to the same CNAME record as you created previosuly. 
+Locate the Ingress yaml file, and update the DNS hostname to the same CNAME record as you created previosuly. 
 
 ![Ingress-host](https://user-images.githubusercontent.com/52551458/115219357-cd5ce080-a14a-11eb-82d7-51b4e1ad15dc.png)
 
-
+Finally, deploy the demo app with K8s Ingress exposing the UI layer externally via the AWS NLB
+```
+[ec2-user@ip-10-11-48-16 guestbook-ingress]$ kubectl apply -f .
+deployment.apps/guestbook-api created
+service/guestbook-api created
+ingress.networking.k8s.io/guestbook-ingress created
+deployment.apps/guestbook-ui created
+service/guestbook-ui created
+```
