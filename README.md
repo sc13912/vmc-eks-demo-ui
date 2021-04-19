@@ -1,16 +1,16 @@
 # vmc-eks-demo-ui
-A hybrid guestbook demo app that is designed to showcase the VMware Cloud on AWS (VMC) native service integration capacbilities with Amazon Elastic Kubernetes Service (Amazon EKS) and AWS DevOps tools, through the connected customer’s Virtual Private Cloud (VPC) using the high-speed, low-latency Elastic Network Interface (ENI). 
+A hybrid guestbook demo app that is designed to showcase the VMware Cloud on AWS (VMC) native service integration capabilities with Amazon Elastic Kubernetes Service (Amazon EKS) and AWS DevOps tools, through the connected customer’s Virtual Private Cloud (VPC) using the high-speed, low-latency Elastic Network Interface (ENI). 
 
-This demo app includes two containerised microservices for both the [guestbook-ui](https://github.com/sc13912/vmc-eks-demo-ui) and [guestbook-api](https://github.com/sc13912/vmc-eks-demo-api) components running on a Amazon EKS cluster, and a PostgresSQL VM deployed on a VMC envrionment. 
+This demo app includes two containerised microservices for both the [guestbook-ui](https://github.com/sc13912/vmc-eks-demo-ui) and [guestbook-api](https://github.com/sc13912/vmc-eks-demo-api) components running on a Amazon EKS cluster, and a PostgresSQL VM deployed on a VMC environment. 
 
 <img width="1112" alt="emc-eks-demo-app" src="https://user-images.githubusercontent.com/52551458/115220495-f3cf4b80-a14b-11eb-97d1-5f85182d6233.png">
 
 
 ---
 ## Prerequisites
-* Access to an AWS envrionment 
+* Access to an AWS environment
 * Access to a VMC SDDC cluster which is linked to the above AWS account
-* A VPC which has L3 reachbility (via ENI or TGW) to the SDDC and contains two public subnets (make sure to enable ***Auto-assign public IPv4 address*** for the public subnets)
+* A VPC which has L3 reachability (via ENI or TGW) to the SDDC and contains two public subnets (make sure to enable ***Auto-assign public IPv4 address*** for the public subnets)
 * An EC2 Linux Bastion instance deployed in the same VPC
 * Install basic tooling on the Bastion VM
 ```
@@ -136,7 +136,7 @@ namespace/vmc-demo created
 
 #Optional - update the namespaces within both (ui & api) deployment yaml files if you use a different namespace rather than "vmc-demo"
 
-#Update the envrionment varalibles, based on your own Postgres DB setup, within the container spec under the guestbook-api deployment yaml file
+#Update the environment variables, based on your own Postgres DB setup, within the container spec under the guestbook-api deployment yaml file
 [ec2-user@ip-10-250-0-10 guestbook-lb]$ vim gb-api-deployment.yaml
 ```
 <img width="344" alt="guestbook-api-env" src="https://user-images.githubusercontent.com/52551458/115224511-46ab0200-a150-11eb-9ad5-ccc25aa4efc1.png">
@@ -170,7 +170,7 @@ Now point your browser to the ELB URL and you should have access to the fully fu
 
 
 ### 4.2 ***Optional: Deploy the demo app with Kubernetes Ingress object (with integration to Amazon NLB)***
-To begin, follow the same steps as above to update namespace and envrionment varaibles of the deployment yaml files
+To begin, follow the same steps as above to update namespace and environment variables of the deployment yaml files
 ```
 #First, create a k8s namespace for the demo app
 [ec2-user@ip-10-11-48-16 ~]$ kubectl create namespace vmc-demo
@@ -178,7 +178,7 @@ namespace/vmc-demo created
 
 #Optional - update the namespaces within all three (ui,api,ingress) yaml files if you use a different namespace rather than "vmc-demo"
 
-#Update the envrionment varalibles, based on your own Postgres DB setup, within the container spec under the guestbook-api deployment yaml file
+#Update the environment variables, based on your own Postgres DB setup, within the container spec under the guestbook-api deployment yaml file
 [ec2-user@ip-10-11-48-16 guestbook-ingress]$ vim gb-api-deployment.yaml
 ```
 Now, if you have a valid public domain then you can set up host-based routing via Kubernetes ingress, which provides intelligent layer 7 routing and reduces the consumption of additional NLBs.
