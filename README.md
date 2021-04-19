@@ -187,7 +187,7 @@ Then, create a CNAME record pointing to the same NLB address at your DNS provide
 
 Locate the Ingress yaml file, and update the DNS hostname to the same CNAME record as you created previosuly. 
 
-![Ingress-host](https://user-images.githubusercontent.com/52551458/115219357-cd5ce080-a14a-11eb-82d7-51b4e1ad15dc.png)
+<img width="329" alt="guestbook-ingress" src="https://user-images.githubusercontent.com/52551458/115224739-95589c00-a150-11eb-98e2-ca7670570768.png">
 
 Finally, deploy the demo app with K8s Ingress exposing the UI layer externally via the AWS NLB
 ```
