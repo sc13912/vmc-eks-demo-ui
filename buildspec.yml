@@ -7,7 +7,7 @@ phases:
       - curl -sS -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
       - chmod +x ./kubectl ./aws-iam-authenticator
       - export PATH=$PWD/:$PATH
-      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
       - apt-get update && apt-get -y install yarn nodejs npm jq python3-pip python3-dev && pip3 install --upgrade awscli
   pre_build:
       commands:
@@ -16,6 +16,7 @@ phases:
         - export KUBECONFIG=$HOME/.kube/config
   build:
     commands:
+      - npm install
       - yarn build
       - docker build --tag $REPOSITORY_URI:$TAG .
 
