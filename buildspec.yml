@@ -29,7 +29,7 @@ phases:
       - export AWS_SESSION_TOKEN="$(echo ${CREDENTIALS} | jq -r '.Credentials.SessionToken')"
       - export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
-      - kubectl set image deployment/guestbook-ui guestbook-ui='$REPOSITORY_URI:$TAG' -n vmc-demo --record=true
+      - kubectl set image deployment/guestbook-ui guestbook-ui=$REPOSITORY_URI:$TAG -n vmc-demo --record=true
       - printf '[{"name":"guestbook-ui","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
 artifacts:
   files: build.json
