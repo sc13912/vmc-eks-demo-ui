@@ -1,9 +1,17 @@
 # vmc-eks-demo-ui
-A hybrid guestbook demo app that is designed to showcase the VMware Cloud on AWS (VMC) native services integration capabilities with Amazon Elastic Kubernetes Service (Amazon EKS), through the connected customer’s Virtual Private Cloud (VPC) using the high-bandwidth, low-latency Elastic Network Interface (ENI). 
+A hybrid guestbook app that is designed to showcase the VMware Cloud on AWS (VMC) native services integration capabilities with Amazon Elastic Kubernetes Service (Amazon EKS), through the connected customer’s Virtual Private Cloud (VPC) using the high-bandwidth, low-latency Elastic Network Interface (ENI). 
 
 This demo app includes two containerised microservices for both the [guestbook-ui](https://github.com/sc13912/vmc-eks-demo-ui) and [guestbook-api](https://github.com/sc13912/vmc-eks-demo-api) components running on a Amazon EKS cluster, and a PostgresSQL VM deployed on a VMC environment. 
 
-<img width="1112" alt="emc-eks-demo-app" src="https://user-images.githubusercontent.com/52551458/115220495-f3cf4b80-a14b-11eb-97d1-5f85182d6233.png">
+![Screen Shot 2021-05-31 at 11 19 42 am](https://user-images.githubusercontent.com/52551458/120127488-d689a480-c202-11eb-92b4-0b64b32998d9.png)
+
+**Updated on 2021-05-31**
+Now includes a simple CI/CD pipeline for the [guestbook-ui](https://github.com/sc13912/vmc-eks-demo-ui) microservice! leveraging AWS DevOps tools including AWS CodePipeline, AWS CodeCommit, and AWS CodeBuild, with native integrations to Amazon EKS and Amazon Elastic Container Registry (Amazon ECR).
+**Steps**
+1. Build the (EKS+VMC) Lab environment and deploy the demo app as per below guide;
+2. Fork this repository to your own Github account;
+3. Follow the [guide here](https://www.eksworkshop.com/intermediate/220_codepipeline/) to create an CodeBuild IAM role (for interacting with EKS) and launch a CI/CD pipeline for the guestbook-ui (linked to your own Git repository);
+4. Make a small/cosmetic change to the repo and observe the pipeline run
 
 
 ---
