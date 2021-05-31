@@ -6,13 +6,13 @@ This demo app includes two containerised microservices for both the [guestbook-u
 ![Screen Shot 2021-05-31 at 11 19 42 am](https://user-images.githubusercontent.com/52551458/120127488-d689a480-c202-11eb-92b4-0b64b32998d9.png)
 
 **Updated on 2021-05-31**<br />
-Now includes a simple CI/CD pipeline for the [guestbook-ui](https://github.com/sc13912/vmc-eks-demo-ui) microservice! leveraging AWS DevOps tools including AWS CodePipeline, AWS CodeCommit, and AWS CodeBuild, with native integrations to Amazon EKS and Amazon Elastic Container Registry (Amazon ECR).<br />
+Now includes a simple CI/CD pipeline for the [guestbook-ui](https://github.com/sc13912/vmc-eks-demo-ui) microservice! leveraging AWS DevOps tools including AWS CodePipeline, AWS CodeCommit, and AWS CodeBuild, with native integrations to Amazon EKS and Amazon Elastic Container Registry (Amazon ECR).
 <br />
-**High Level Steps**<br />
+**High-Level Steps**<br />
 1. Build the (EKS+VMC) Lab environment and deploy the demo app as per below guide;
 2. Fork this repository to your own Github account;
-3. Follow the [guide here](https://www.eksworkshop.com/intermediate/220_codepipeline/) to create an CodeBuild IAM role (for interacting with EKS) and launch a CI/CD pipeline for the guestbook-ui (linked to your own Git repository);
-4. Make a small/cosmetic change to the repo and observe the pipeline run
+3. Follow the [guide here](https://www.eksworkshop.com/intermediate/220_codepipeline/) to create an CodeBuild IAM role (for interacting with EKS) and launch a CI/CD pipeline for the guestbook-ui (linked to your own Github repository);
+4. Make a small/cosmetic change to the repo and observe the pipeline run, and the new version of the app gets deployed to the EKS cluster
 
 
 ---
