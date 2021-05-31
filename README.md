@@ -3,7 +3,8 @@ A hybrid guestbook app that is designed to showcase the VMware Cloud on AWS (VMC
 
 This demo app includes two containerised microservices for both the [guestbook-ui](https://github.com/sc13912/vmc-eks-demo-ui) and [guestbook-api](https://github.com/sc13912/vmc-eks-demo-api) components running on a Amazon EKS cluster, and a PostgresSQL VM deployed on a VMC environment. 
 
-![Screen Shot 2021-05-31 at 11 19 42 am](https://user-images.githubusercontent.com/52551458/120127488-d689a480-c202-11eb-92b4-0b64b32998d9.png)
+![Screen Shot 2021-05-31 at 2 31 11 pm](https://user-images.githubusercontent.com/52551458/120144996-347bb380-c226-11eb-8829-97f4e10171c3.png)
+
 
 **Updated on 2021-05-31**<br />
 Now includes a simple CI/CD pipeline for the [guestbook-ui](https://github.com/sc13912/vmc-eks-demo-ui) microservice! leveraging AWS DevOps tools including AWS CodePipeline, AWS CodeCommit, and AWS CodeBuild, with native integrations to Amazon EKS and Amazon Elastic Container Registry (Amazon ECR).<br />
