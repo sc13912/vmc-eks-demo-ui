@@ -12,7 +12,7 @@ Now includes a simple CI/CD pipeline for the [guestbook-ui](https://github.com/s
 1. Build the (EKS+VMC) Lab environment and deploy the demo app as per below guide;
 2. Fork this repository to your own Github account;
 3. Follow the [guide here](https://www.eksworkshop.com/intermediate/220_codepipeline/) to create an CodeBuild IAM role (for interacting with EKS) and launch a CI/CD pipeline for the guestbook-ui (linked to your own Github repository);
-4. Make a small/cosmetic change to the repo and observe the pipeline run, and the new version of the app gets deployed to the EKS cluster
+4. Make a small/cosmetic change to the repo and observe the pipeline run, and the new version of the app gets automatically deployed to your EKS cluster
 
 
 ---
