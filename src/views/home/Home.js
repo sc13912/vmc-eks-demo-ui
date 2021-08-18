@@ -67,7 +67,7 @@ export const Home = () => {
         <div className="container">
             <div className="title">
                 <img src={logo} alt={"EKS+VMC LOGO"} />
-                <h2 style={{ color: 'blue' }}>Guest Book Message Board -ver 2.9</h2>
+                <h2 style={{ color: 'blue' }}>Guest Book Message Board -ver 3.0</h2>
             </div>
 
             <Grid container className="master-container" spacing={3}>
