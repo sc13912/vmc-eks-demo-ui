@@ -1,5 +1,9 @@
 ---
 version: 0.2
+env:
+  secrets-manager:
+    secret_docker_username: docker-credentials:DOCKERHUB_USERNAME
+    secret_docker_password: docker-credentials:DOCKERHUB_PASSWORD
 phases:
   install:
     commands:
@@ -15,7 +19,7 @@ phases:
         - $(aws ecr get-login --no-include-email)
         - export KUBECONFIG=$HOME/.kube/config
         - echo logging in docker hub
-        - docker login --username $DOCKERHUB_USERNAME --password $DOCKERHUB_PASSWORD
+        - docker login --username $secret_docker_username --password $secret_docker_password
   build:
     commands:
       - npm install
