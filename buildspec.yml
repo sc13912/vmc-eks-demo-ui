@@ -15,11 +15,11 @@ phases:
       - apt-get update && apt-get -y install npm 
   pre_build:
       commands:
+        - echo logging in docker hub
+        - echo $secret_docker_password | docker login --username $secret_docker_username --password-stdin
         - TAG="$REPOSITORY_NAME.$REPOSITORY_BRANCH.$ENVIRONMENT_NAME.$(date +%Y-%m-%d.%H.%M.%S).$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
         - $(aws ecr get-login --no-include-email)
         - export KUBECONFIG=$HOME/.kube/config
-        - echo logging in docker hub
-        - echo $secret_docker_password | docker login --username $secret_docker_username --password-stdin > /dev/null
   build:
     commands:
       - npm install
