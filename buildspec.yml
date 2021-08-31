@@ -19,7 +19,7 @@ phases:
         - $(aws ecr get-login --no-include-email)
         - export KUBECONFIG=$HOME/.kube/config
         - echo logging in docker hub
-        - docker login --username $secret_docker_username --password $secret_docker_password
+        - echo $secret_docker_password | docker login --username $secret_docker_username --password-stdin
   build:
     commands:
       - npm install
